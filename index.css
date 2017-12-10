@@ -9,14 +9,24 @@
     --profile-photo-size: 10rem;
 
     --content-width: 60rem;
-    --content-offset: calc(
+    --content-pre-padding: 5.25rem;
+    
+    --profile-photo-offset: calc(
         (100% - var(--content-width)) * 0.5
     );
 }
 
 @media (max-width: 60rem){
     :root {
-        --content-offset: 1rem;
+        --profile-photo-offset: 1rem;
+    }
+}
+
+@media (max-width: 380px){
+    :root {
+        --profile-photo-offset: -0.3rem;
+        --profile-photo-size: 0rem;
+        --content-pre-padding: 0rem;
     }
 }
 
@@ -25,6 +35,10 @@ body {
 }
 
 /* Title Bar */
+#title-bar{
+    min-height: var(--title-background-height);
+}
+
 #title-background {
     background: #222629;
     
@@ -36,11 +50,16 @@ body {
 } 
 
 #title {
-    margin-left: 0.6rem;
-    margin-bottom: 4.25rem;
+    min-height: var(--title-background-height);
+    margin-left: 1rem;
 
-    vertical-align: middle;
-    display: inline-block;
+    vertical-align: top;
+    display: inline-flex;
+    flex-flow: column nowrap;
+}
+
+#title-spacer{
+    flex-grow: 1;
 }
 
 #profile-photo-border {
@@ -50,7 +69,7 @@ body {
     height: var(--profile-photo-size);
     border-radius: 100%;
     
-    margin-left: var(--content-offset);
+    margin-left: var(--profile-photo-offset);
     top: calc(
         var(--title-background-height) - (var(--profile-photo-size) * 0.5)
     );
@@ -142,7 +161,7 @@ body {
     max-width: var(--content-width);
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1rem;
+    margin-top: var(--content-pre-padding);
 
     display: flex;
     flex-flow: row wrap;
@@ -150,11 +169,11 @@ body {
 }
 
 #content-left {
-    flex: 1 1 35rem;
+    flex: 1 1 28rem;
     padding: 1rem;
 }
 
 #content-right {
-    flex: 1 1 20rem;
+    flex: 1 1 18rem;
     padding: 1rem;
 }
